@@ -68,3 +68,34 @@ class MinStack {
         stack.last?.min ?? -1
     }
 }
+
+/*
+class MaxStack2 {
+    var stack: [(element: Int, max: Int)] = []
+    func push(_ x: Int) {
+        if 0 == stack.count {
+            stack.append((x,x))
+        } else {
+            stack.append((x, max(x, self.peekMax())))
+        }
+    }
+    
+    func pop() -> Int {
+       let obj = stack.popLast()
+        return obj?.element ?? -1
+    }
+    
+    func top() -> Int {
+        stack.last?.element ?? -1
+    }
+    
+    func peekMax() -> Int {
+        stack.last?.max ?? -1
+    }
+    
+    func popMax() -> Int {
+        let last = stack.removeLast()
+        return last.max
+    }
+}
+*/
