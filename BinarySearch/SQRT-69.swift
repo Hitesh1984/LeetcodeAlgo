@@ -33,11 +33,11 @@
 
 func mySqrt(_ x: Int) -> Int {
     guard x > 3 else {return x == 0 ? 0 : 1}
-    var (l, r) = (0, x/2)
+    var (l, r) = (0, x/2) // 0,4
     
     while l<=r{
-        let mid = (l+r)/2
-        let res = mid*mid
+        let mid = (l+r)/2 // 2
+        let res = mid*mid // 4
         
         if res == x{
             return mid

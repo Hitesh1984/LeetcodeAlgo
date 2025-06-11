@@ -46,6 +46,7 @@ class Solution123 {
             }
             while !small.isEmpty && small.unordered[0].ind <= i {
                 small.popMin()
+                
             }
             while !large.isEmpty && large.unordered[0].ind <= i {
                 large.popMax()
