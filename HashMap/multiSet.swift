@@ -13,31 +13,22 @@ class multiSet<T:Comparable & Hashable> {
     var count = 0
     
     func add(element:T) {
-        if let val = hashMap[element] {
-            hashMap[element] = val + 1
-        } else {
-            hashMap[element] = 1
-        }
+        hashMap[element, default: 0] += 1
         count += 1
     }
     
     func remove(element:T) {
-        if let val = hashMap[element] {
-            if val == 1 {
-                hashMap.removeValue(forKey: element)
-            } else {
-                hashMap[element] = val - 1
-            }
+        if hashMap[element, default: 0] == 1 {
+            hashMap.removeValue(forKey: element)
+            count -= 1
+        } else if hashMap[element, default: 0] > 1 {
+            hashMap[element, default: 0] -= 1
             count -= 1
         }
-        
     }
     
     func countOf(element:T) -> Int {
-        if let val = hashMap[element] {
-            return val
-        }
-        return 0
+        return hashMap[element, default: 0]
     }
     
     func countAll() -> Int {
