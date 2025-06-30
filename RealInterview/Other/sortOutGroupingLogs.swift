@@ -86,3 +86,30 @@ class sortOut {
         return  ans
     }
 }
+
+func testcasesOfSortGroup() {
+    let events = [
+      ["CONNECT","Alice","Bob"],
+      ["DISCONNECT","Bob","Alice"],
+      ["CONNECT","Alice","Charlie"],
+      ["CONNECT","Dennis","Bob"],
+      ["CONNECT","Pam","Dennis"],
+      ["DISCONNECT","Pam","Dennis"],
+      ["CONNECT","Pam","Dennis"],
+      ["CONNECT","Edward","Bob"],
+      ["CONNECT","Dennis","Charlie"],
+      ["CONNECT","Alice","Nicole"],
+      ["CONNECT","Pam","Edward"],
+      ["DISCONNECT","Dennis","Charlie"],
+      ["CONNECT","Dennis","Edward"],
+      ["CONNECT","Charlie","Bob"]
+    ]
+    
+    let obj1 = sortOut(events)
+    let res1 = obj1.grouping(3)
+    print(res1)
+    let res2 = obj1.grouping(1)
+    print(res2)
+    let res3 = obj1.grouping(10)
+    print(res3)
+}
