@@ -47,7 +47,8 @@
  0 <= value <= 105
  At most 2 * 105 calls will be made to get and put.
  */
-import Foundation
+//import Foundation
+import OrderedCollections
 
 
 //private class Node {
@@ -69,13 +70,10 @@ class Node:Equatable {
     static func == (lhs: Node, rhs: Node) -> Bool {
         return lhs.key == rhs.key && lhs.val == rhs.val && lhs.prev == rhs.prev && lhs.next == rhs.next
     }
-    
     var key: Int
     var val: Int
     var prev: Node?
     var next: Node?
-    
-    
     init(key: Int, val: Int) {
         self.key = key
         self.val = val
@@ -84,7 +82,6 @@ class Node:Equatable {
 }
 
 class LRUCache {
- 
     private let capacity:Int
     private var head:Node?
     private var tail:Node?
@@ -95,7 +92,6 @@ class LRUCache {
     }
     
     func get(_ key: Int) -> Int {
-        
         guard let cur = cache[key] else {
             return -1
         }
@@ -107,10 +103,8 @@ class LRUCache {
         if let node = cache[key] {
             node.val = value
             moveToHead(node)
-            
         } else {
             let node = Node(key: key, val: value)
-            
             node.next = head
             head?.prev = node
             head = node
@@ -120,7 +114,6 @@ class LRUCache {
                 tail = head
             }
         }
-        
         if count > capacity {
             cache.removeValue(forKey: tail!.key)
             tail = tail?.prev
@@ -143,13 +136,29 @@ class LRUCache {
             tail = tail?.prev
             tail?.next = nil
         }
-        
-        if node === tail {
-            tail = tail?.prev
-            tail?.next = nil
-        }
     }
-    
-
 }
 
+class LRUCache2 {
+    var capacity: Int
+    var cache = OrderedDictionary<Int, Int>()
+    init(_ capacity: Int) {
+        self.capacity = capacity
+    }
+    func get(_ key: Int) -> Int {
+        if let value = cache.removeValue(forKey: key) {
+            cache[key] = value
+            return value
+        } else { return -1 }
+    }
+    func put(_ key: Int, _ value: Int) {
+        if let _ = cache.removeValue(forKey: key)  {
+            cache[key] = value
+        } else {
+            if cache.count == capacity {
+                cache.removeValue(forKey: cache.keys.first!)
+            }
+            cache[key] = value
+        }
+    }
+}

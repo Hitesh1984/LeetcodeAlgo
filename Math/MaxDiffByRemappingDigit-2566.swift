@@ -63,3 +63,5 @@ func minMaxDifference(_ num: Int) -> Int {
     return Int(String(maxVal))! - Int(String(minVal))!
     
 }
+
+
