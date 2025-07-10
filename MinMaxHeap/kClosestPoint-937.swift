@@ -38,7 +38,40 @@
  -104 <= xi, yi <= 104
  */
 import Foundation
+import Collections
 
+struct pointIndex:Comparable  {
+    let area:Int
+    let index:Int
+    static func < (lhs:pointIndex, rhs:pointIndex) -> Bool {
+        lhs.area < rhs.area
+    }
+}
+
+func kClosest(_ points: [[Int]], _ K: Int) -> [[Int]] {
+    if points.count == 0 || K == 0 || K > points.count {
+        return [[]]
+    }
+    var minHeap = Heap<pointIndex>()
+    for i in 0..<points.count{
+        let pt = points[i]
+        let area = (abs(pt[0])*abs(pt[0])) + (abs(pt[1])*abs(pt[1]))
+        minHeap.insert(pointIndex(area: area, index: i))
+    }
+    var res:[[Int]] = []
+    var K = K
+    while K > 0 {
+        let item = minHeap.popMin()!
+        minHeap.min
+        res.append(points[item.index])
+        K -= 1
+    }
+    return res
+}
+
+
+
+/*
 func kClosest(_ points: [[Int]], _ k: Int) -> [[Int]] {
     var task: MinHeap? = MinHeap<Int>()
     var ans = [[Int]]()
@@ -61,4 +94,4 @@ func distance(xPoint:Int, yPoint:Int ) -> Int {
     return Int(pow(Double(xPoint - 0),2) +
                pow(Double(yPoint - 0),2))
 }
-
+*/
