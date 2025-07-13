@@ -43,7 +43,6 @@ func minMeetingRooms(intervals : [[Int]]) -> Int {
     // start 0, 5, 10, 21, 31
     // end 10,20,30, 35,35
     while start < intervals.count {
-
         let sTime = startTimes[start]
         let eTime = endTimes[end]
         if sTime >= eTime {
