@@ -67,7 +67,7 @@ class FileSystem {
             return false
         }
         let delimIndex = path.lastIndex(of: "/")!
-        var parent = path[..<delimIndex]
+        let parent = path[..<delimIndex]
         if parent.count > 1 && self.paths[String(parent)] == nil {
             return false
         }
