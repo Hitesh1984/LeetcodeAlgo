@@ -36,8 +36,6 @@
 
  */
 
-class Solution {
-    func isSameAfterReversals(_ num: Int) -> Bool {
+func isSameAfterReversals(_ num: Int) -> Bool {
         num == 0 || num % 10 > 0
-    }
 }
