@@ -55,12 +55,41 @@ func countComponents(_ n: Int, _ edges: [[Int]]) -> Int {
         result += 1
         stack.append(i)
         while let node = stack.popLast() {
-            if seen[node] {
-                continue
-            }
             seen[node] = true
-            stack.append(contentsOf: graph[node])
+            for obj in graph[node] where !seen[obj] {
+                stack.append(obj)
+            }
         }
     }
     return result
 }
+
+/*
+ func countComponents(_ n: Int, _ edges: [[Int]]) -> Int {
+ if edges.isEmpty { return n }
+ if edges.count == 1 { return n-1 }
+ var graph = Array(repeating: [Int](), count: n)
+ for ed in edges {
+ graph[ed[0]].append(ed[1])
+ graph[ed[1]].append(ed[0])
+ }
+ var result = 0
+ var stack = [Int]()
+ var seen = Array(repeating: false, count: n)
+ for i in 0..<n {
+ if seen[i] {
+ continue
+ }
+ result += 1
+ stack.append(i)
+ while let node = stack.popLast() {
+ if seen[node] {
+ continue
+ }
+ seen[node] = true
+ stack.append(contentsOf: graph[node])
+ }
+ }
+ return result
+ }
+ */
