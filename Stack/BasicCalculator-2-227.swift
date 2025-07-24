@@ -66,6 +66,5 @@ func calculate2(_ s: String) -> Int {
             op = String(char)
         }
     }
-    //stack.max()
     return stack.reduce(0, +)
 }
