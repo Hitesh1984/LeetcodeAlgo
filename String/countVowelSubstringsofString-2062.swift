@@ -46,3 +46,21 @@
  word consists of lowercase English letters only.
 
  */
+
+func countVowelSubstrings(_ word: String) -> Int {
+    guard word.count > 4 else { return 0 }
+    let word = Array(word)
+    var vowels = Set<Character>("aeiou")
+    var result = 0
+    for i in 0..<word.count where vowels.contains(word[i]) {
+        var remainingVowels = vowels
+        for ch in word[i ..< word.count] {
+            guard vowels.contains(ch) else { break  }
+            remainingVowels.remove(ch)
+            if remainingVowels.isEmpty {
+                result += 1
+            }
+        }
+    }
+    return result
+}
