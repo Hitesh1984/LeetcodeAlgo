@@ -40,7 +40,7 @@
  Each element in the array appears twice except for one element which appears only once.
  */
 
-func singleNumber(_ nums: [Int]) -> Int {
+func singleNumber123(_ nums: [Int]) -> Int {
     var ans = 0
     for num in nums { ans ^= num }
     return ans
