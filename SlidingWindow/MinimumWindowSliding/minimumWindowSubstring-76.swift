@@ -51,17 +51,19 @@ func minWindow(_ s: String, _ t: String) -> String {
     var missing = t.count
     var s = Array(s)
     while(end < s.count) {
+        // ADOBECODEBANC
         let current = s[end]
         if needMap[current, default:0] > 0 {
-            missing -= 1
+            missing -= 1 // 1
+            
         }
         needMap[current, default:0] -= 1
         while(missing == 0 && start < s.count) {
             if(minLength > end - start + 1) {
-                minLength =  end - start + 1
-                minStart = start
+                minLength =  end - start + 1 // 6
+                minStart = start // 0
             }
-            let head = s[start]
+            let head = s[start] // a
             if needMap[head, default:0] >= 0 {
                 missing += 1
             }
