@@ -44,4 +44,5 @@ func generate(_ numRows: Int) -> [[Int]] {
         }
     }
     return ans
+    ans.last
 }
