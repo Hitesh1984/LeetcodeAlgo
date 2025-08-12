@@ -115,7 +115,7 @@ class zigZagSolution {
     }
 }
 
-func zigzagLevelOrder(_ root: TreeNode?) -> [[Int]] {
+func zigzagLevelOrder123(_ root: TreeNode?) -> [[Int]] {
     var result = [[Int]]()
     var firstQueue = [TreeNode]()
     var secondQueue = [TreeNode]()
@@ -132,9 +132,8 @@ func zigzagLevelOrder(_ root: TreeNode?) -> [[Int]] {
             while !firstQueue.isEmpty {
                 let tree = firstQueue.removeFirst() as! TreeNode
                 level.append(tree.val)
-                //if let left = tree.left {
-                if tree.left != nil {
-                    secondQueue.append(tree.left!)
+                if let left = tree.left {
+                    secondQueue.append(left)
                 }
                 //if let right = tree.right {
                 if tree.right != nil {
@@ -168,48 +167,20 @@ func zigzagLevelOrder(_ root: TreeNode?) -> [[Int]] {
 }
 
 
-/*
-class zigzagTraversal {
+func zigzagLevelOrder(_ root: TreeNode?) -> [[Int]] {
+    var ans = [[Int]]()
+    dfs(root, level: 0, ans: &ans)
+    return ans
     
-    var firstQueue = [TreeNode]()
-    var secondQueue = [TreeNode]()
-    func zigzagLevelOrder(_ root: TreeNode?) -> [[Int]] {
-        var result = [[Int]]()
-        if let root = root {
-            firstQueue.append(root)
+    func dfs(_ node: TreeNode?, level: Int, ans: inout [[Int]]) {
+        guard let node = node else { return }
+        if ans.count <= level { ans.append([Int]()) }
+        if level % 2 == 0 {
+            ans[level].append(node.val)
         } else {
-            return []
+            ans[level].insert(node.val, at: 0)
         }
-        
-        while !firstQueue.isEmpty || secondQueue.isEmpty {
-            var level = [Int]()
-            while !firstQueue.isEmpty {
-                let tree = firstQueue.removeFirst() as! TreeNode
-                level.append(tree.val)
-                if let left = tree.left {
-                    secondQueue.append(left)
-                }
-                if let right = tree.right {
-                    secondQueue.append(right)
-                }
-            }
-            while !secondQueue.isEmpty {
-                let tree = secondQueue.removeFirst() as! TreeNode
-                level.append(tree.val)
-                if let left = tree.left {
-                    firstQueue.append(left)
-                }
-                if let right = tree.right {
-                    firstQueue.append(right)
-                }
-            }
-            
-            if level.count > 0 {
-                result.append(level)
-            }
-        }
-        return result
+        dfs(node.left, level: level + 1, ans: &ans)
+        dfs(node.right, level: level + 1, ans: &ans)
     }
 }
-
-*/
