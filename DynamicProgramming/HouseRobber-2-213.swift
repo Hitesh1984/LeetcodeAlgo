@@ -36,7 +36,7 @@
 
  */
 
-func rob(_ nums: [Int]) -> Int {
+func rob1(_ nums: [Int]) -> Int {
     guard nums.count != 0 else { return 0 }
     guard nums.count != 1 else { return nums[0] }
     return max(helper(nums, 0, nums.count - 2), helper(nums, 1, nums.count - 1))
