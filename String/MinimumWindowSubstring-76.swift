@@ -120,6 +120,7 @@ class MinimumWindowSubString {
         }
         
         return Array(sChars[indexs[minStart]...indexs[minStart] + minLength]).join("")
+        
     }
 
     
