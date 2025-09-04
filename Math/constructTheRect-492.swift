@@ -36,6 +36,8 @@
  1 <= area <= 107
  */
 
+import Foundation
+
 func constructRectangle(_ area: Int) -> [Int] {
     let range = 1...Int(sqrt(Float(area)))
     let width = range.last{n in area.isMultiple(of:n)}!
