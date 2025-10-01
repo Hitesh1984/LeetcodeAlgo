@@ -36,13 +36,22 @@
  The depth of the n-ary tree is less than or equal to 1000.
  */
 
-func maxDepth(_ root: Node?) -> Int {
+public class NAryNode {
+      public var val: Int
+      public var children: [NAryNode]
+      public init(_ val: Int) {
+        self.val = val
+        self.children = []
+    }
+}
+
+func maxDepth(_ root: NAryNode?) -> Int {
     var depth = 0
     guard let root = root else { return depth }
     var stack = [root]
     while !stack.isEmpty {
         depth += 1
-        var nodes = [Node]()
+        var nodes = [NAryNode]()
         for val in stack {
             nodes.append(contentsOf: val.children)
         }
