@@ -34,7 +34,7 @@
 
  */
 
-func fizzBuzz(_ n: Int) -> [String] {
+func fizzBuzz45(_ n: Int) -> [String] {
     var op = [String]()
     for num in 1...n {
         if num % 15 == 0 {
