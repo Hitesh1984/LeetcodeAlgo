@@ -20,19 +20,12 @@ struct position:Equatable{
 }
 func isValidSudoku(_ board: [[Character]]) -> Bool {
     var seen = Array<position>()
-    
-//    for i in board.indices {
-//        print(i)
-//    }
-    
     for i in 0..<9 {
         for j in 0..<9 {
             let currVal = board[i][j]
             if currVal == "." {
                 continue
             }
-            //let box = ((i/3)*10 + (j/3) )
-            //print("i= \(i) , j = \(j), box =  \(box) and value = \(currVal) ")
             let pos = position(row:i, col: j, box: ((i/3)*10 + (j/3) ), value: currVal )
             if seen.contains(pos) {
                 return false
