@@ -62,6 +62,7 @@ class Solution123444 {
         
         while heap.unordered.count > 1 {
             let pair1 = heap.removeMin()
+            var pair2 = heap.min!
             if  pair2.start + duration <= pair1.end{
                 return [pair2.start, pair2.start + duration]
             }
