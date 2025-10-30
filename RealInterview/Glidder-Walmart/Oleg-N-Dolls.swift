@@ -60,7 +60,7 @@ func maxDolls(_ n:Int, doll:[Int]) -> Int {
     let doll = doll.sorted()
     var count = doll.count
     var packedDoll = [Int]()
-    for (index,d) in doll.enumerated() /* where !seen[index]  */ {
+    for (index,d) in doll.enumerated()  {
         var newInd = index + 1
         while newInd < count &&  d >= doll[newInd] {
             newInd += 1
@@ -68,12 +68,11 @@ func maxDolls(_ n:Int, doll:[Int]) -> Int {
         while newInd < count && packedDoll.contains(newInd) {
             newInd += 1
         }
-        
         if newInd < count && d < doll[newInd] {
             if let i = packedDoll.firstIndex(of: index) {
                 packedDoll.remove(at: i)
             }
-            packedDoll.append(newInd) // 1
+            packedDoll.append(newInd) 
         }
     }
     return packedDoll.count
