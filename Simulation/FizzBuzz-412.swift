@@ -36,7 +36,7 @@
 
  */
 
-func fizzBuzz(_ n: Int) -> [String] {
+func fizzBuzz2(_ n: Int) -> [String] {
     if n < 1 {
         return []
     }
