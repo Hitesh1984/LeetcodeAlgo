@@ -79,3 +79,16 @@ func compress(_ chars: inout [Character]) -> Int {
     writeIn(  curCh, curCount)
     return s
 }
+
+/*
+ func singleNumber(_ nums: [Int]) -> Int {
+         var a = 0
+         var b = 0
+         for num in nums {
+             let newA = a & ~b & ~num + ~a & b & num
+             let newB = ~a & b & ~num + ~a & ~b & num
+             (a, b) = (newA, newB)
+         }
+         return a | b
+     }
+ */

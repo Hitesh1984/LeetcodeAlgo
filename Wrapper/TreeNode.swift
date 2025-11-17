@@ -30,6 +30,12 @@ public class TreeNode {
         self.left = left
         self.right = right
     }
+    
+    public init(_ val: Int, _ left: TreeNode?, _ right: TreeNode?) {
+           self.val = val
+           self.left = left
+           self.right = right
+    }
 }
 
 extension TreeNode: CustomStringConvertible {
