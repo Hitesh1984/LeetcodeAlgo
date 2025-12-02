@@ -42,7 +42,7 @@
 
 func countUnivalSubtrees(_ root: TreeNode?) -> Int {
     var count = 0
-    isValid(root)
+    _ = isValid(root)
     return count
     
     func isValid(_ node: TreeNode?) -> Bool {
