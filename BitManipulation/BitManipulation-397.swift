@@ -38,7 +38,7 @@
 
  */
 
-func integerReplacement(_ n: Int) -> Int {
+func integerReplacement23(_ n: Int) -> Int {
     var steps = 0
     var num = n
     while num != 1 {
