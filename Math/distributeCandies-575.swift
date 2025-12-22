@@ -42,3 +42,19 @@
 func distributeCandies(_ candyType: [Int]) -> Int {
     min(candyType.count / 2, Set(candyType).count)
 }
+
+
+func distributeCandies2(_ candyType: [Int]) -> Int {
+        let count = candyType.count
+        var diffType = 0
+        var candySet : Set<Int> = []
+
+        for num in candyType {
+            if !candySet.contains(num)
+            {
+                diffType += 1
+                candySet.insert(num)
+            }
+        }
+        return min(diffType, count/2)
+    }
