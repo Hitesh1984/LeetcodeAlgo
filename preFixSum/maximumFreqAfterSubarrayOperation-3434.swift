@@ -53,7 +53,7 @@ func maxFreqTestCases() {
 }
 
 func maxFrequency(_ nums: [Int], _ k: Int) -> Int {
-    var map = nums.reduce(into: [:]) { $0[$1, default: 0] += 1 }
+    let map = nums.reduce(into: [:]) { $0[$1, default: 0] += 1 }
     func kadane(_ key:Int) -> Int {
         var res = 0
         var cur = 0
